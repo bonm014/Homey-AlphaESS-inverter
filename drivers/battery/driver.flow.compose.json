@@ -1,0 +1,270 @@
+{
+  "actions": [
+    {
+      "id": "battery_get_discharge_times",
+      "title": {
+        "en": "get discharging info",
+        "nl": "Haal ontlaad schema op"
+      },
+      "hint": {
+        "en": "get discharging setting information",
+        "nl": "Haal ontlaad schema op"
+      },
+      "tokens": [
+        {
+          "name": "batUseCap",
+          "type": "number",
+          "title": {
+            "en": "Discharging Cutoff SOC [%]"
+          },
+          "example": {
+            "en": "batUseCap"
+          }
+        },
+        {
+          "name": "ctrDis",
+          "type": "number",
+          "title": {
+            "en": "Enable Battery Discharge Time Control"
+          },
+          "example": {
+            "en": "ctrDis"
+          }
+        },
+        {
+          "name": "timeDise1",
+          "type": "string",
+          "title": {
+            "en": "Discharging Period 1 End time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeDise2",
+          "type": "string",
+          "title": {
+            "en": "Discharging Period 2 End time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeDisf1",
+          "type": "string",
+          "title": {
+            "en": "Discharging Period 1 Start time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeDisf2",
+          "type": "string",
+          "title": {
+            "en": "Discharging Period 2 Start time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_get_charge_times",
+      "title": {
+        "en": "get charging info"
+      },
+      "hint": {
+        "en": "get charging setting information"
+      },
+      "tokens": [
+        {
+          "name": "batHighCap",
+          "type": "number",
+          "title": {
+            "en": "Charging Stops at SOC [%]"
+          },
+          "example": {
+            "en": "batHighCap"
+          }
+        },
+        {
+          "name": "gridCharge",
+          "type": "number",
+          "title": {
+            "en": "Enable Grid Charging Battery"
+          },
+          "example": {
+            "en": "gridCharge"
+          }
+        },
+        {
+          "name": "timeChae1",
+          "type": "string",
+          "title": {
+            "en": "Charging Period 1 end time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeChae2",
+          "type": "string",
+          "title": {
+            "en": "Charging Period 2 end time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeChaf1",
+          "type": "string",
+          "title": {
+            "en": "Charging Period 1 start time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        },
+        {
+          "name": "timeChaf2",
+          "type": "string",
+          "title": {
+            "en": "Charging Period 2 start time"
+          },
+          "example": {
+            "en": "HH:mm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_set_charge_times",
+      "title": {
+        "en": "Set charging info",
+        "nl": "Stel laadschema in"
+      },
+      "hint": {
+        "en": "the time format is HH:mm, such as: 00:00, the maximum is 23:45, the minimum is 00:00, and the interval is 15 minutes, otherwise no effect",
+        "nl": "De tijdformaat is uu:mm zoals 00:00, het maximum is 23:45,het minumum is 00:00, met een interval van 15 minuten, anders geen effect"
+      },
+      "args": [
+        {
+          "type": "range",
+          "name": "batHighCap",
+          "placeholder": {
+            "en": "Charging Stops at SOC [%]"
+          },
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "type": "number",
+          "name": "gridCharge",
+          "placeholder": {
+            "en": "Enable Grid Charging Battery"
+          },
+          "min": 0,
+          "max": 1,
+          "step": 1
+        },
+        {
+          "type": "text",
+          "name": "timeChaf1",
+          "placeholder": {
+            "en": "Charging Period 1 start time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeChae1",
+          "placeholder": {
+            "en": "Charging Period 1 end time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeChaf2",
+          "placeholder": {
+            "en": "Charging Period 2 start time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeChae2",
+          "placeholder": {
+            "en": "Charging Period 2 end time"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battery_set_discharge_times",
+      "title": {
+        "en": "Set discharging info",
+        "nl": "Stel ontlaadschema in"
+      },
+      "hint": {
+        "en": "the time format is HH:mm, such as: 00:00, the maximum is 23:45, the minimum is 00:00, and the interval is 15 minutes, otherwise no effect",
+        "nl": "De tijdformaat is uu:mm zoals 00:00, het maximum is 23:45,het minumum is 00:00, met een interval van 15 minuten, anders geen effect"
+      },
+      "args": [
+        {
+          "type": "range",
+          "name": "batUseCap",
+          "placeholder": {
+            "en": "Discharging Cutoff SOC [%]"
+          },
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "type": "number",
+          "name": "ctrDis",
+          "placeholder": {
+            "en": "Enable Battery Discharge Time Control"
+          },
+          "min": 0,
+          "max": 1,
+          "step": 1
+        },
+        {
+          "type": "text",
+          "name": "timeDisf1",
+          "placeholder": {
+            "en": "Discharging Period 1 start time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeDise1",
+          "placeholder": {
+            "en": "Discharging Period 1 end time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeDisf2",
+          "placeholder": {
+            "en": "Discharging Period 2 start time"
+          }
+        },
+        {
+          "type": "text",
+          "name": "timeDise2",
+          "placeholder": {
+            "en": "Discharging Period 2 end time"
+          }
+        }
+      ]
+    }
+  ]
+}

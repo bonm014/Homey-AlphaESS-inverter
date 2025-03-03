@@ -1,6 +1,7 @@
 'use strict';
 
 const crypto = require('crypto');
+const Homey = require('homey');
 
 function generateHash(appId, appSecret, timestamp) {
   const data = `${appId}${appSecret}${timestamp}`;
@@ -9,4 +10,26 @@ function generateHash(appId, appSecret, timestamp) {
   return hash;
 }
 
-module.exports = generateHash;
+function generateHeader(homey, sysSn) {
+  const appId = homey.settings.get('appId');
+  const appSecret = homey.settings.get('appSecret');
+
+  const timeStamp = Math.floor(Date.now() / 1000);
+
+  const sign = generateHash(appId, appSecret, timeStamp);
+
+  const header = {
+    headers: {
+      appId,
+      timeStamp,
+      sign,
+    }
+  };
+
+  return header;
+}
+
+module.exports = {
+  generateHash : generateHash,
+  generateHeader : generateHeader
+};

@@ -22,8 +22,7 @@
     "homeBattery": true,
     "batteries": [
       "OTHER"
-    ],
-    "cumulative": true
+    ]
   },
   "platforms": [
     "local"

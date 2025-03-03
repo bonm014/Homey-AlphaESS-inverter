@@ -1,6 +1,6 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "nl.aboreaon.alpaess",
+  "id": "nl.aboreaon.alpaess-dev",
   "version": "1.0.0",
   "compatibility": ">=12.2.0",
   "sdk": 3,
@@ -8,18 +8,18 @@
     "local"
   ],
   "name": {
-    "en": "AlphaESS",
-    "nl": "AlphaESS",
-    "da": "AlphaESS",
-    "de": "AlphaESS",
-    "es": "AlphaESS",
-    "fr": "AlphaESS",
-    "it": "AlphaESS",
-    "no": "AlphaESS",
-    "sv": "AlphaESS",
-    "pl": "AlphaESS",
-    "ru": "AlphaESS",
-    "ko": "AlphaESS"
+    "en": "AlphaESS DEV",
+    "nl": "AlphaESS DEV",
+    "da": "AlphaESS DEV",
+    "de": "AlphaESS DEV",
+    "es": "AlphaESS DEV",
+    "fr": "AlphaESS DEV",
+    "it": "AlphaESS DEV",
+    "no": "AlphaESS DEV",
+    "sv": "AlphaESS DEV",
+    "pl": "AlphaESS DEV",
+    "ru": "AlphaESS DEV",
+    "ko": "AlphaESS DEV"
   },
   "description": {
     "en": "Gives insights in your home energy management.",
@@ -60,6 +60,360 @@
   },
   "source": "https://github.com/Aboreon/Homey-AlphaESS-inverter",
   "register": "https://github.com/Aboreon/Homey-AlphaESS-inverter",
+  "flow": {
+    "actions": [
+      {
+        "id": "battery_get_discharge_times",
+        "title": {
+          "en": "get discharging info",
+          "nl": "Haal ontlaad schema op"
+        },
+        "hint": {
+          "en": "get discharging setting information",
+          "nl": "Haal ontlaad schema op"
+        },
+        "tokens": [
+          {
+            "name": "batUseCap",
+            "type": "number",
+            "title": {
+              "en": "Discharging Cutoff SOC [%]"
+            },
+            "example": {
+              "en": "batUseCap"
+            }
+          },
+          {
+            "name": "ctrDis",
+            "type": "number",
+            "title": {
+              "en": "Enable Battery Discharge Time Control"
+            },
+            "example": {
+              "en": "ctrDis"
+            }
+          },
+          {
+            "name": "timeDise1",
+            "type": "string",
+            "title": {
+              "en": "Discharging Period 1 End time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeDise2",
+            "type": "string",
+            "title": {
+              "en": "Discharging Period 2 End time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeDisf1",
+            "type": "string",
+            "title": {
+              "en": "Discharging Period 1 Start time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeDisf2",
+            "type": "string",
+            "title": {
+              "en": "Discharging Period 2 Start time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery"
+          }
+        ]
+      },
+      {
+        "id": "battery_get_charge_times",
+        "title": {
+          "en": "get charging info"
+        },
+        "hint": {
+          "en": "get charging setting information"
+        },
+        "tokens": [
+          {
+            "name": "batHighCap",
+            "type": "number",
+            "title": {
+              "en": "Charging Stops at SOC [%]"
+            },
+            "example": {
+              "en": "batHighCap"
+            }
+          },
+          {
+            "name": "gridCharge",
+            "type": "number",
+            "title": {
+              "en": "Enable Grid Charging Battery"
+            },
+            "example": {
+              "en": "gridCharge"
+            }
+          },
+          {
+            "name": "timeChae1",
+            "type": "string",
+            "title": {
+              "en": "Charging Period 1 end time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeChae2",
+            "type": "string",
+            "title": {
+              "en": "Charging Period 2 end time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeChaf1",
+            "type": "string",
+            "title": {
+              "en": "Charging Period 1 start time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "name": "timeChaf2",
+            "type": "string",
+            "title": {
+              "en": "Charging Period 2 start time"
+            },
+            "example": {
+              "en": "HH:mm"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery"
+          }
+        ]
+      },
+      {
+        "id": "battery_set_charge_times",
+        "title": {
+          "en": "Set charging info",
+          "nl": "Stel laadschema in"
+        },
+        "hint": {
+          "en": "the time format is HH:mm, such as: 00:00, the maximum is 23:45, the minimum is 00:00, and the interval is 15 minutes, otherwise no effect",
+          "nl": "De tijdformaat is uu:mm zoals 00:00, het maximum is 23:45,het minumum is 00:00, met een interval van 15 minuten, anders geen effect"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery"
+          },
+          {
+            "type": "range",
+            "name": "batHighCap",
+            "placeholder": {
+              "en": "Charging Stops at SOC [%]"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1
+          },
+          {
+            "type": "number",
+            "name": "gridCharge",
+            "placeholder": {
+              "en": "Enable Grid Charging Battery"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 1
+          },
+          {
+            "type": "text",
+            "name": "timeChaf1",
+            "placeholder": {
+              "en": "Charging Period 1 start time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeChae1",
+            "placeholder": {
+              "en": "Charging Period 1 end time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeChaf2",
+            "placeholder": {
+              "en": "Charging Period 2 start time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeChae2",
+            "placeholder": {
+              "en": "Charging Period 2 end time"
+            }
+          }
+        ]
+      },
+      {
+        "id": "battery_set_discharge_times",
+        "title": {
+          "en": "Set discharging info",
+          "nl": "Stel ontlaadschema in"
+        },
+        "hint": {
+          "en": "the time format is HH:mm, such as: 00:00, the maximum is 23:45, the minimum is 00:00, and the interval is 15 minutes, otherwise no effect",
+          "nl": "De tijdformaat is uu:mm zoals 00:00, het maximum is 23:45,het minumum is 00:00, met een interval van 15 minuten, anders geen effect"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery"
+          },
+          {
+            "type": "range",
+            "name": "batUseCap",
+            "placeholder": {
+              "en": "Discharging Cutoff SOC [%]"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1
+          },
+          {
+            "type": "number",
+            "name": "ctrDis",
+            "placeholder": {
+              "en": "Enable Battery Discharge Time Control"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 1
+          },
+          {
+            "type": "text",
+            "name": "timeDisf1",
+            "placeholder": {
+              "en": "Discharging Period 1 start time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeDise1",
+            "placeholder": {
+              "en": "Discharging Period 1 end time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeDisf2",
+            "placeholder": {
+              "en": "Discharging Period 2 start time"
+            }
+          },
+          {
+            "type": "text",
+            "name": "timeDise2",
+            "placeholder": {
+              "en": "Discharging Period 2 end time"
+            }
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "alpha_state_changed",
+        "title": {
+          "en": "The work mode changed",
+          "nl": "De werkmodus is gewijzigd",
+          "da": "Arbejdstilstanden ændrede sig",
+          "de": "Der Arbeitsmodus hat sich geändert",
+          "es": "El modo de trabajo cambió",
+          "fr": "Le mode de travail a changé",
+          "it": "La modalità di lavoro è cambiata",
+          "no": "Arbeidsmodus endret",
+          "sv": "Arbetsläget har ändrats",
+          "pl": "Tryb pracy zmienił się",
+          "ru": "Режим работы изменился",
+          "ko": "작업 모드가 변경되었습니다"
+        },
+        "tokens": [
+          {
+            "type": "string",
+            "name": "alpha_state",
+            "title": {
+              "en": "Inverter work mode",
+              "nl": "Omvormer werkmodus",
+              "da": "Inverter arbejdstilstand",
+              "de": "Wechselrichter-Betriebsmodus",
+              "es": "Modo de trabajo del inversor",
+              "fr": "Mode de fonctionnement de l'onduleur",
+              "it": "Modalità di lavoro dell'inverter",
+              "no": "Inverter arbeidsmodus",
+              "sv": "Inverter arbetssätt",
+              "pl": "Tryb pracy inwertera",
+              "ru": "Режим работы инвертора",
+              "ko": "인버터 작업 모드"
+            },
+            "example": {
+              "en": "Wait Mode, UPS Mode, ...",
+              "nl": "Wachtmodus, UPS-modus, ...",
+              "da": "Ventetilstand, UPS-tilstand, ...",
+              "de": "Wartemodus, UPS-Modus, ...",
+              "es": "Modo de espera, modo UPS, ...",
+              "fr": "Mode attente, Mode UPS, ...",
+              "it": "Modalità attesa, Modalità UPS, ...",
+              "no": "Ventemodus, UPS-modus, ...",
+              "sv": "Vänteläge, UPS-läge, ...",
+              "pl": "Tryb oczekiwania, tryb UPS, ...",
+              "ru": "Режим ожидания, режим ИБП, ...",
+              "ko": "대기 모드, UPS 모드, ..."
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=grid_modbus"
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {
@@ -85,8 +439,7 @@
         "homeBattery": true,
         "batteries": [
           "OTHER"
-        ],
-        "cumulative": true
+        ]
       },
       "platforms": [
         "local"
@@ -1282,68 +1635,6 @@
       ]
     }
   ],
-  "flow": {
-    "triggers": [
-      {
-        "id": "alpha_state_changed",
-        "title": {
-          "en": "The work mode changed",
-          "nl": "De werkmodus is gewijzigd",
-          "da": "Arbejdstilstanden ændrede sig",
-          "de": "Der Arbeitsmodus hat sich geändert",
-          "es": "El modo de trabajo cambió",
-          "fr": "Le mode de travail a changé",
-          "it": "La modalità di lavoro è cambiata",
-          "no": "Arbeidsmodus endret",
-          "sv": "Arbetsläget har ändrats",
-          "pl": "Tryb pracy zmienił się",
-          "ru": "Режим работы изменился",
-          "ko": "작업 모드가 변경되었습니다"
-        },
-        "tokens": [
-          {
-            "type": "string",
-            "name": "alpha_state",
-            "title": {
-              "en": "Inverter work mode",
-              "nl": "Omvormer werkmodus",
-              "da": "Inverter arbejdstilstand",
-              "de": "Wechselrichter-Betriebsmodus",
-              "es": "Modo de trabajo del inversor",
-              "fr": "Mode de fonctionnement de l'onduleur",
-              "it": "Modalità di lavoro dell'inverter",
-              "no": "Inverter arbeidsmodus",
-              "sv": "Inverter arbetssätt",
-              "pl": "Tryb pracy inwertera",
-              "ru": "Режим работы инвертора",
-              "ko": "인버터 작업 모드"
-            },
-            "example": {
-              "en": "Wait Mode, UPS Mode, ...",
-              "nl": "Wachtmodus, UPS-modus, ...",
-              "da": "Ventetilstand, UPS-tilstand, ...",
-              "de": "Wartemodus, UPS-Modus, ...",
-              "es": "Modo de espera, modo UPS, ...",
-              "fr": "Mode attente, Mode UPS, ...",
-              "it": "Modalità attesa, Modalità UPS, ...",
-              "no": "Ventemodus, UPS-modus, ...",
-              "sv": "Vänteläge, UPS-läge, ...",
-              "pl": "Tryb oczekiwania, tryb UPS, ...",
-              "ru": "Режим ожидания, режим ИБП, ...",
-              "ko": "대기 모드, UPS 모드, ..."
-            }
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=grid_modbus"
-          }
-        ]
-      }
-    ]
-  },
   "capabilities": {
     "alpha_fault_text": {
       "type": "string",

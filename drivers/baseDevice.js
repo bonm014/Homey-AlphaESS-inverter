@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 const axios = require('axios');
-const generateHash = require('./generateHash');
+const {generateHash, generateHeader} = require('./generateHash.js');
 
 class BaseDevice extends Homey.Device {
 
