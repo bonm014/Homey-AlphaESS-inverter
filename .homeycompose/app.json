@@ -1,5 +1,5 @@
 {
-  "id": "nl.aboreaon.alpaess-dev",
+  "id": "nl.aboreaon.alpaess",
   "version": "1.0.0",
   "compatibility": ">=12.2.0",
   "sdk": 3,
@@ -7,18 +7,18 @@
     "local"
   ],
   "name": {
-    "en": "AlphaESS DEV",
-    "nl": "AlphaESS DEV",
-    "da": "AlphaESS DEV",
-    "de": "AlphaESS DEV",
-    "es": "AlphaESS DEV",
-    "fr": "AlphaESS DEV",
-    "it": "AlphaESS DEV",
-    "no": "AlphaESS DEV",
-    "sv": "AlphaESS DEV",
-    "pl": "AlphaESS DEV",
-    "ru": "AlphaESS DEV",
-    "ko": "AlphaESS DEV"
+    "en": "AlphaESS",
+    "nl": "AlphaESS",
+    "da": "AlphaESS",
+    "de": "AlphaESS",
+    "es": "AlphaESS",
+    "fr": "AlphaESS",
+    "it": "AlphaESS",
+    "no": "AlphaESS",
+    "sv": "AlphaESS",
+    "pl": "AlphaESS",
+    "ru": "AlphaESS",
+    "ko": "AlphaESS"
   },
   "description": {
     "en": "Gives insights in your home energy management.",
